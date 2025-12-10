@@ -1,0 +1,27 @@
+module add2 (
+  input  wire [3:0] a,
+  input  wire [3:0] b,
+  output wire [4:0] sum
+);
+  assign sum =a+b;
+endmodule
+module mult2 (
+  input  wire [3:0] a,
+  input  wire [3:0] b,
+  output wire [7:0] mult
+);
+  wire [3:0] pp0 =b[0] ? a : 4'b0000;
+  wire [3:0] pp1 =b[1] ? a : 4'b0000;
+  wire [3:0] pp2 =b[2] ? a : 4'b0000;
+  wire [3:0] pp3 =b[3] ? a : 4'b0000;
+
+  wire [4:0] sum1;
+  wire [4:0] sum2;
+  wire [4:0] sum3;
+
+  add2 add_stage1 (.a({1'b0, pp1}), .b({pp0, 1'b0}), .sum(sum1));
+  add2 add_stage2 (.a({1'b0, pp2}), .b(sum1[4:0]), .sum(sum2));
+  add2 add_stage3 (.a({pp3, 1'b0}), .b(sum2[4:0]), .sum(sum3));
+
+  assign mult ={sum3[4:0], pp0[0]};
+endmodule

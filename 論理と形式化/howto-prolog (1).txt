@@ -1,0 +1,19 @@
+3 ways to run SWI Prolog
+
+1. Use web interface
+
+  https://swish.swi-prolog.org/example/kb.pl
+
+2. Run 'swipl' on coins machine
+
+   remote login by:
+       ssh username@azalea01.coins.tsukuba.ac.jp
+   start SWI Prolog by:
+       swipl
+   
+3. Install 'swipl' on your machine
+
+   (on Debian/Ubuntu)
+       su
+       apt install swi-prolog
+       
